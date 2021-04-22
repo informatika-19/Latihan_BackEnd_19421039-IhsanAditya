@@ -14,8 +14,8 @@ usermodel.findOne({
             pesan: 'username telah ada'
         })
     }else {
-       bcrypt.hash(data.passowrd, 10, (err, hash) => {
-           data.passowrd = hash
+       bcrypt.hash(data.password, 10, (err, hash) => {
+           data.password = hash
            // untuk menginput data/ create
            usermodel.create(data)
                 .then(() => {
@@ -43,7 +43,7 @@ new Promise((resolve, reject) =>{
         username: data.username
     }).then(user => {
         if (user) {
-            if (bcrypt.compareSync(data.password, user.passowrd)){
+            if (bcrypt.compareSync(data.password, user.password)){
                 resolve({
                     status: true,
                     pesan: 'berhasil login'
